@@ -23,7 +23,7 @@ To explore and analyze the data, I used:
 - Tableau to vizualize the data.
 - GitHub to share my work.
 
-# Analysis: 
+#🔍 Analysis: 
 Before we can begin any analysis, we first need to take a closer look at our data and… humbly acknowledge a few flaws.
 
 Firstly, we don’t have explicit information about observations where no ocean surgeonfish were present.\
@@ -37,7 +37,7 @@ Here are some facts about the species:
 - The species Acanthurus Tractus is an open-water/pelagic egg scatterer, forming reproductive groups in the months from November to March.
 
 
-### Where and when is there the most number of observations (all observations, lesions or not)?
+### - Where and when is there the most number of observations (all observations, lesions or not)?
 It is helpful to find the number of observations per site, as we could eventually build off this in order to deepen our analysis. With the following query, we can see that not all sites have an equal distribiution of observations. Some sites have had more observations than others, such as Piscadera Bay, Rif Sint Marie and Kleine Knip.
 ```sql
 SELECT 
@@ -81,7 +81,7 @@ ORDER BY avg_observations_per_day DESC;
 ```
 We can see that the average number of observations per day varies significantly across sites. Locations such as Pietermaai, Blue Bay, and Tugboat show noticeably higher daily averages compared to others *(even more than our usual suspects Piscadera Bay, Rif Sint Marie and Kleine Knip)*.
 
-### Where and when are lesions most present?
+### - Where and when are lesions most present?
 The next query helped find the total lesion count per site.
 ```sql
 SELECT 
@@ -125,7 +125,7 @@ Lesions appear to be most common, on average, during the months of March and Dec
 
 
 
-### How bad do they get (highest number of lesions per fish), where and when?
+### - How bad do they get (highest number of lesions per fish), where and when?
 -- Find the total lesion count per site -- MAX is Porto Marie with 54
 ```sql
 SELECT 
@@ -146,13 +146,13 @@ GROUP BY observation_date
 ORDER BY max_lesion_count DESC;
 ```
 
-### Has the number of lesions spread over time or over geographic zone?
+### - Has the number of lesions spread over time or over geographic zone?
 
 All of our queries give us a good starting point for analysis, but they also raise more questions.
 
 In the following graph, I have plotted the lesion count of sites against the time in days. The sites shown are the only sites in the dataset that have multiple observations across time. 
 
-![graph](URL GRAPH)
+![graph](acanthurus_tractus_scuba_transects_curacao/assets/Screenshot 2025-10-24 105855.png)
 
 We can observe that in some areas, like Piscadera Bay or Rif Sint Marie, we can see lesions **increasing** over time, while in places like Playa Kalki or Klein Knip, the numbers seem to be **decreasing** or stay about the same. On the whole, there’s a general trend of fewer lesions being observed across these sites.\
 For all other sites, there seems to be no pattern. It would seem that we cannot conclude that the number of lesions spreads across geographic zones. 
@@ -168,8 +168,5 @@ However, when we take a closer look at the chart showing average lesion counts, 
 - Total table with: site, number observations, % lesions. 
 
 
-
-With these SQL queries we then can map the results on some graphs:\
-![graph](URL GRAPH)
 
 *So Long, and Thanks for All the Fish*
