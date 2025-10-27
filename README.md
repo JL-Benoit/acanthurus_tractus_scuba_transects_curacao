@@ -4,7 +4,7 @@
 This is a SQL training exercise where I use a dataset on individual ocean surgeonfish *(Acanthurus tractus)* observed in 2022 during SCUBA transects around the island of Curaçao in the Caribbean. 
 It contains information on the number of lesions (seen as black spots) on one side of each fish caused by trematode infection *(Scaphanocephalus expansus)*.
 
-*Credit: de Wit, Cheyenna; Johnson, Pieter (2024). fish.csv. figshare. Dataset. https://doi.org/10.6084/m9.figshare.25471969.v1*
+*Credit: de Wit, Cheyenna; Johnson, Pieter (2024). fish.csv. figshare. Dataset. https://doi.org/10.6084/m9.figshare.25471969.v1* \
 *Image of infection: uploaded by Zachary F Kohl.*
 
 As with all good analysis, we must start by asking some good questions:
@@ -168,26 +168,44 @@ In any case, all data concerning "Where" and "When" the lesions appear, the obse
 
 ![graph_all](assets/Graph5.png)
 
-I have also plotted the lesion count of sites against the time in days. The sites shown are the only sites in the dataset that have multiple observations across time :
+I have also plotted the lesion count of sites against the time in days. 
+The sites shown are the only sites in the dataset that have multiple observations across time :
 
 ![graph_avg_lesions_zone](assets/Graph1.png)
 
-We can observe that in some areas, like Piscadera Bay or Rif Sint Marie, we can see lesions **increasing** over time, while in places like Playa Kalki or Klein Knip, the numbers seem to be **decreasing** or stabilizing. On the whole, there’s a general trend of fewer lesions being observed across these sites.\
-For all other sites, there seems to be no pattern. It would seem that we cannot conclude that the number of lesions spreads across geographic zones. 
+We can observe that in some areas, like Piscadera Bay or Rif Sint Marie, we can see lesions **increasing** over time, while in places like Playa Kalki or Klein Knip, the numbers seem to be **decreasing** or stabilizing. 
+On the whole, there’s a general trend of fewer lesions being observed across these sites.\
+For all other sites, there seems to be no pattern. *It would seem that we cannot conclude that the number of lesions spreads across geographic zones.*
 
-We should keep in mind that we only have a year’s worth of data. So, is the decline of observations because there are fewer visible instances of infection later in the year, or because there are simply fewer surgeonfish around at that time?\
-Most likely, it’s a bit of both: fewer fish in total with fewer lesions observed. This can be backed up by the fact that Acanthurus Tractus is a pelagic egg scatterer, reproducing in open waters in the months from November to March.
+We should keep in mind that we only have a year’s worth of data. So, is the decline of observations because there are fewer visible instances of infection later in the year,
+or because there are simply fewer surgeonfish around at that time?\
+Most likely, it’s a bit of both: *fewer fish in total with fewer lesions observed.* 
+This can be backed up by the fact that Acanthurus Tractus is a **pelagic** egg scatterer, reproducing in open waters in the months from November to March.
 
 
-
-However, when we take a closer look at the chart showing average lesion counts, we notice a spike toward the end of the year.\
-**The average number of observed lesions increases in December.** This might seem to contradict our previous point, but more importantly, it could indicate *underlying issues* or contributing factors that are not captured within the dataset.
+That would be a fine conclusion to our study. However, when we take a closer look at the chart showing average lesion counts *(zoomed in below)*, we notice a spike toward the end of the year.\
+The average number of observed lesions **increases in December.** This might seem to contradict our previous point, but more importantly, it could indicate *underlying issues* or *contributing factors* that are not captured within the dataset.
 
 ![graph_avg_lesions](assets/Graph4.png)
 
 # 🤔 Conclusion and Takeaway:
-Total table with: site, number observations, % lesions. 
-![graph_avg_lesions](assets/Graph5.png)
+So what are the general insights from this analysis? Let's see :
+- **Most frequent observations :** *Acanthurus Tractus* were most frequently observed in **Piscadera Bay, Rif Sint Marie, and Kleine Knip**, particularly during the months of **March, April, and May.**
+- **Highest number of lesions observed :** Lesions were recorded most often in **Piscadera Bay, Rif Sint Marie, and Kleine Knip,** especially during March and December.
+- **Maximum lesions on a single fish :** The highest number of lesions observed on a single fish occurred in **Porto Marie on December 29, 2022.**
+- **Highest average lesion count (per site and month) :** On average, lesions were most prevalent in March and December. Sites such as Rif Sint Marie, Playa Jeremi, and Porto Marie showed the highest averages, **with over six lesions per fish.**
+- **Unclear temporal or geographical trends :** There is insufficient data to conclusively determine whether lesions are spreading over time or across regions.
+</br>
+
+While the current dataset does not allow us to draw a fully conclusive narrative, it does provide valuable guidance for future research.
+Based on these findings, I recommend focusing future monitoring efforts on the following sites : <ins>Piscadera Bay, Rif Sint Marie, Kleine Knip, Playa Jeremi, and Porto Marie.</ins>
+</br>
+</br>
+To better understand lesion progression and potential spread, I suggest:
+- Conducting weekly dives to monitor changes over time.
+- Collecting environmental data, such as water temperature, to explore potential correlations.
+- Considering factors such as fish age to investigate whether older individuals are more prone to lesions.
+</br>
 
 
 *So Long, and Thanks for All the Fish*
