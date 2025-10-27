@@ -1,0 +1,101 @@
+-- General check -- 
+SELECT *
+FROM fish_observations;
+
+
+-- Count the total number of observations --
+SELECT 
+    COUNT(*) AS num_observations
+FROM fish_observations;
+
+
+-- Count the total number of observations with at least 1 lesion --
+SELECT 
+    COUNT(*) AS num_observations
+FROM fish_observations
+WHERE lesion_count <= 1;
+
+-- List all unique sites where observations were recorded --
+SELECT 
+    site
+FROM fish_observations
+GROUP BY 
+    site;
+
+
+-- Find the earliest observation date in the dataset --
+SELECT observation_date
+FROM fish_observations
+ORDER BY observation_date ASC
+LIMIT 1;
+
+
+-- Find the latest observation date in the dataset --
+SELECT observation_date
+FROM fish_observations
+ORDER BY observation_date DESC
+LIMIT 1;
+
+
+-- Let's check the number of observations per site --
+SELECT 
+    site, 
+    COUNT(*) AS num_observations
+FROM fish_observations
+GROUP BY 
+    site
+ORDER BY num_observations DESC;
+
+
+-- Find the average depth across all observations --
+SELECT 
+    ROUND(AVG(depth_m), 2)
+FROM fish_observations;
+
+
+-- List all observations with zero lesions --
+SELECT *
+FROM fish_observations
+WHERE lesion_count = 0;
+
+
+-- Count the number of observations per diver --
+SELECT 
+    diver,
+    COUNT(*) AS num_observations
+FROM fish_observations
+GROUP BY diver
+ORDER BY num_observations DESC;
+
+
+-- Find the total lesion count from the dataset --
+SELECT
+    SUM(lesion_count) AS total_lesions
+FROM fish_observations
+
+
+-- Find the total number of lesions recorded across all observations by the amount of lesions present --
+SELECT 
+    lesion_count,
+    COUNT(*) AS num_observations
+FROM fish_observations
+GROUP BY lesion_count
+ORDER BY num_observations DESC;
+
+
+-- List the maximum lesion count recorded at each site --
+SELECT 
+    MAX(lesion_count) AS max_lesion_count,
+    site
+FROM fish_observations
+GROUP BY site
+ORDER BY max_lesion_count DESC;
+
+
+-- Find the minimum depth recorded at each site --
+SELECT 
+    MIN(depth_m),
+    site
+FROM fish_observations
+GROUP BY site
+ORDER BY site DESC;

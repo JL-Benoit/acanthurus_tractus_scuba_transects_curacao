@@ -1,0 +1,15 @@
+COPY fish_observations
+FROM 'C:\Users\jeanb\Desktop\Data Analysis\acanthurus_tractus_scuba_transects_curacao\csv_file\fish.csv'
+WITH (FORMAT csv, HEADER true, DELIMITER ',', ENCODING 'UTF8');
+
+\copy fish_observations FROM 'C:\Users\jeanb\Desktop\Data Analysis\acanthurus_tractus_scuba_transects_curacao\csv_file\fish.csv' WITH (FORMAT csv, HEADER true, DELIMITER ',', ENCODING 'UTF8');
+
+CREATE TABLE fish_observations (
+    site VARCHAR(255),
+    observation_date DATE,
+    depth_m NUMERIC,
+    diver VARCHAR(255),
+    time TIME,
+    lesion_count INT
+);
+

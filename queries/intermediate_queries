@@ -1,0 +1,87 @@
+-- List divers and their average lesion count per observation --
+SELECT 
+    ROUND(AVG(lesion_count),2) AS avg_lesion_count,
+    diver
+FROM fish_observations
+GROUP BY diver
+ORDER BY avg_lesion_count DESC;
+
+
+-- List sites and their average lesion count --
+SELECT 
+    ROUND(AVG(lesion_count),4) AS avg_lesion_count,
+    site
+FROM fish_observations
+GROUP BY site
+ORDER BY avg_lesion_count DESC;
+
+
+-- Count how many observations occurred at each depth --
+SELECT 
+    depth_m,
+    COUNT(observation_date) AS num_observations
+FROM fish_observations
+GROUP BY depth_m
+ORDER BY num_observations DESC;
+
+
+-- Find the total lesion count per diver -- 
+SELECT 
+    COUNT(lesion_count) AS total_lesion_count,
+    diver
+FROM fish_observations
+GROUP BY diver
+ORDER BY total_lesion_count DESC;
+
+
+-- List sites ordered by total number of lesions, descending --
+SELECT 
+    site,
+    COUNT(lesion_count) AS total_lesion_count
+FROM fish_observations
+GROUP BY site
+ORDER BY total_lesion_count DESC;
+
+
+-- Find the number of observations per month --
+SELECT
+    COUNT(observation_date) AS num_observations,
+    EXTRACT(MONTH FROM observation_date) AS month
+FROM fish_observations
+GROUP BY month
+ORDER BY month ASC;
+
+
+-- Identify the diver with the highest total lesion count recorded --
+SELECT 
+    diver,
+    COUNT(lesion_count) AS total_lesion_count
+FROM fish_observations
+GROUP BY diver
+ORDER BY total_lesion_count DESC;
+
+
+-- For each site, compute the average depth of observations --
+SELECT 
+    site,
+    ROUND(AVG(depth_m),2) AS avg_depth
+FROM fish_observations
+GROUP BY site
+ORDER BY avg_depth DESC;
+
+
+-- Count how many days had observations with at least one lesion --
+SELECT 
+    COUNT(*) AS num_observations
+FROM fish_observations
+WHERE lesion_count >= 1;
+
+
+-- Count how many observations occurred for each (site, diver) combination --
+SELECT DISTINCT
+    site ,
+    diver,
+    COUNT(*) AS num_observations
+FROM fish_observations
+GROUP BY diver,site
+ORDER BY num_observations DESC;

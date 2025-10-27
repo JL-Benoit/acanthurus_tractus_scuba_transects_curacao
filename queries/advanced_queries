@@ -1,0 +1,77 @@
+-- Does lesion count tend to be higher at 2 m or 5 m depths? Compute the average and rank depths by lesion severity -- 
+SELECT 
+    depth_m,
+    AVG(lesion_count) AS avg_lesion_count
+FROM fish_observations
+GROUP BY depth_m
+ORDER BY avg_lesion_count DESC;
+
+
+-- Find the day with the highest total lesion count -- 
+SELECT 
+    observation_date,
+    lesion_count
+FROM fish_observations
+ORDER BY lesion_count DESC
+LIMIT 1;
+
+-- Compute the rolling 7-day average of lesions over time --
+SELECT
+    observation_date,
+    AVG(lesion_count) OVER (
+        ORDER BY observation_date
+        ROWS BETWEEN 6 PRECEDING AND CURRENT ROW
+    ) AS rolling_7_day_avg
+FROM fish_observations;
+
+
+-- List the top 3 divers by average lesions per observation --
+SELECT
+    diver,
+    ROUND(AVG(lesion_count),2) AS avg_lesion_count
+FROM fish_observations
+GROUP BY diver
+ORDER BY avg_lesion_count DESC
+LIMIT 3;
+
+
+-- Identify sites where the maximum lesion count exceeds 10 --
+SELECT 
+    site,
+    MAX(lesion_count) AS highest_lesions
+FROM fish_observations
+GROUP BY site
+HAVING MAX(lesion_count) > 10
+ORDER BY highest_lesions DESC;
+
+
+-- Find the day with the most observations at a single site --
+SELECT
+    observation_date,
+    site,
+    MAX(lesion_count) AS max_lesion_count
+FROM fish_observations
+GROUP BY observation_date, site
+ORDER BY max_lesion_count DESC;
+
+
+-- Count how many observations occurred during morning hours (e.g., 6 AM–12 PM) versus afternoon/evening --
+SELECT
+    CASE
+        WHEN time >= '06:00:00' AND time < '12:00:00' THEN 'Morning'
+        ELSE 'Afternoon/Evening'
+    END AS time_of_day,
+    COUNT(*) AS observation_count
+FROM fish_observations
+GROUP BY time_of_day
+ORDER BY time_of_day DESC;
+
+
+-- Identify observations where lesion count is more than 2 standard deviations above the mean lesion count --
+SELECT *
+FROM fish_observations
+WHERE lesion_count > (
+    SELECT AVG(lesion_count) + 2 * STDDEV(lesion_count)
+    FROM fish_observations
+)
+ORDER BY lesion_count DESC; 

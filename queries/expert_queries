@@ -1,0 +1,22 @@
+-- Compute the percentage of observations per diver that had zero lesions --
+SELECT
+    diver,
+    COUNT(*) AS total_observations,
+    COUNT(CASE WHEN lesion_count = 0 THEN 1 END) AS zero_lesion_observations,
+    ROUND((COUNT(CASE WHEN lesion_count = 0 THEN 1 END)::decimal / COUNT(*)),2) * 100 AS percentage_zero
+FROM fish_observations
+GROUP BY diver
+ORDER BY percentage_zero DESC;
+
+
+-- Determine which site and diver combination has the highest average lesion count, considering only combinations with at least 5 observations --
+SELECT
+    site,
+    diver,
+    ROUND(AVG(lesion_count),2) AS avg_lesions_count,
+    COUNT(*) AS observation_count
+FROM fish_observations
+GROUP BY site, diver
+HAVING COUNT(*) >= 5
+ORDER BY avg_lesions_count DESC
+LIMIT 20;
