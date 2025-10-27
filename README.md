@@ -8,13 +8,15 @@ It contains information on the number of lesions (seen as black spots) on one si
 *Image of infection: uploaded by Zachary F Kohl.*
 
 As with all good analysis, we must start by asking some good questions:
-- Where and when are there the most number of observations (all observations, lesions or not)?
-- Where and when are the lesions most spotted?
-- How bad do they get (highest number of lesions per fish), where and when?
-- Has the number of lesions spread over time or over geographic zone?  
+- *Where and when are there the most number of observations (all observations, lesions or not)?*
+- *Where and when are the lesions most spotted?*
+- *How bad do they get (highest number of lesions per fish), where and when?*
+- *Has the number of lesions spread over time or over geographic zone?*
 
 🕵️ Looking for my SQL queries? They’re here:\
 *Disclaimer: You may find more basic and fun queries not seen in the final analysis made in order to train more.*
+</br>
+</br>
 
 # 🛠️Tools used:
 To explore and analyze the data, I used:
@@ -24,6 +26,7 @@ To explore and analyze the data, I used:
 - Visual Studio Code to run my queries.
 - Tableau to vizualize the data.
 - GitHub to share my work.
+</br>
 
 # 🔍Analysis: 
 Before we can begin any analysis, we first need to take a closer look at our data and… humbly acknowledge a few flaws.
@@ -38,11 +41,11 @@ Here are some facts about the species:
 - Longevity is correlated with water temperature rather than body size.
 - The species Acanthurus Tractus is an open-water/pelagic egg scatterer, forming reproductive groups in the months from November to March.
 
-
 ## Where and when is there the most number of observations (all observations, lesions or not)?
-It is helpful to find the number of observations per site, as we could eventually build off this in order to deepen our analysis. To vizualize more clearly, we  can keep the following map in mind:
+It is helpful to find the number of observations per site, as we could eventually build off this in order to deepen our analysis. 
+To vizualize more clearly, we  can keep the following map in mind:
 
-![map](assets/curacao_map.png)
+![map](assets/curacao_map2.png)
 
 With the following query, we can see that not all sites have an equal distribiution of observations. Some sites have had more observations than others, such as Piscadera Bay, Rif Sint Marie and Kleine Knip.
 ```sql
@@ -91,6 +94,7 @@ ORDER BY avg_observations_per_day DESC;
 
 ```
 We can see that the average number of observations per day varies significantly across sites. Locations such as Pietermaai, Blue Bay, and Tugboat show noticeably higher daily averages compared to others *(even more than our usual suspects Piscadera Bay, Rif Sint Marie and Kleine Knip)*.
+</br>
 
 ## Where and when are lesions most present?
 The next query helped find the total lesion count per site.
@@ -135,9 +139,8 @@ GROUP BY site
 ORDER BY avg_lesion_count DESC;
 ```
 Lesions appear to be most common, on average, during the months of March and December. They are also most frequently observed at sites such as Rif Sint Marie, Playa Jeremi, and Porto Marie, each showing averages of over six lesions per fish.
-
-
-
+</br>
+</br>
 ## How bad do they get (highest number of lesions per fish), where and when?
 The following query helps us find the maximum lesion count per site. We can see that the site with the highest lesion count is Porto Marie with 54 lesions!
 ```sql
@@ -158,10 +161,11 @@ FROM fish_observations
 GROUP BY observation_date
 ORDER BY max_lesion_count DESC;
 ```
+</br>
 
 ## Has the number of lesions spread over time or over geographic zone?
 
-All of our queries give us a good starting point for analysis, but they also raise more questions. In any case, all data concerning "Where" and "When" the lesions appear, the observations occur and average lesion count can be vizualized in the following graph:
+All of our queries give us a good starting point for analysis, but they also raise more questions. In any case, all data concerning "Where" and "When" the lesions appear, the observations occur and average lesion count can be vizualized in the following graphs:
 
 ![graph_all](assets/Graph5.png)
 
