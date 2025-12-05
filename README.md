@@ -13,7 +13,7 @@ As with all good analysis, we must start by asking some good questions:
 - *How bad do they get (highest number of lesions per fish), where and when?*
 - *Has the number of lesions spread over time or over geographic zone?*
 
-🕵️ Looking for my SQL queries? They’re here:\
+🕵️ Looking for my SQL queries? They’re here: [SQL Queries](queries)\
 *Disclaimer: You may find more basic and fun queries not seen in the final analysis made in order to train more.*
 </br>
 
